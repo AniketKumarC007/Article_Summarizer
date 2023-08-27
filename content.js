@@ -1,4 +1,4 @@
-const API_KEY = 'Enter API Key';
+const API_KEY = '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';
 let summary = "";
 const paragraphs = document.querySelectorAll('p');
 let allParagraphsText = '';
@@ -17,7 +17,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   else {
     const APIBody = {
       model: "text-davinci-003",
-      prompt: "Give the summary of this text " + allParagraphsText,
+      prompt: "Give the concise summary of this text in 100 words " + allParagraphsText,
       temperature: 1,
       max_tokens: 100,
     };
