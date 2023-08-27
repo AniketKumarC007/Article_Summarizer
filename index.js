@@ -1,17 +1,16 @@
-document.getElementById("submit").addEventListener(('click'), ()=>{
-  handleSubmit();
-});
-
 const handleSubmit = async () => {
   try {
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-      chrome.tabs.sendMessage(tabs[0].id, {greeting: "hello"}, function(response) {
-        console.log(response);
-        const summaryHere = document.getElementById('summaryHere');
-        summaryHere.innerHTML = response ;
+      let id = Math.floor(Math.random() * 16);
+      chrome.tabs.sendMessage(tabs[0].id, {id: id}, function(response) {
+        if(response.id===id) {
+          const summaryHere = document.getElementById('summaryHere');
+          summaryHere.innerHTML = response.data;
+        }        
       });
     });
   } catch (err) {
     console.log(err);
   }
 };
+handleSubmit();
