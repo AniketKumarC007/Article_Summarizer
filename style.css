@@ -1,13 +1,13 @@
 body{
     width: 1000px;
-     height: 1000px;
+    height: 1000px;
     background-color: aliceblue;
-     display: flex;
-    justify-content: center;
+    /* display: flex; */
+    /* justify-content: center; */
 }
 p{
-    display: inner-flex;
-    margin: auto 10px;
+    /* display: inner-flex; */
+    /* margin: auto 10px; */
      font-size: 22px;
      color: blue;
      border-radius: 6px;

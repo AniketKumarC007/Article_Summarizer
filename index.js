@@ -1,26 +1,18 @@
 const API_KEY = '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';
 
 const inputText = '';
-console.log(inputText);
 
-// chrome.runtime.sendMessage('fROMiNDEX.JS');
-// chrome.runtime.onMessage.addListener((response, sender, sendResponse)=>
-// {
-//     console.log(response);
-//     inputText = response;
-// });
+document.getElementById("submit").addEventListener(('click'), ()=>{
+  handleSubmit();
+})
 
 const handleSubmit = async () => {
- 
   try {
-   
-    // chrome.runtime.sendMessage({ greeting: "hello" }, function (response) {
-    //     console.log(response);
-    //     inputText=response;
-    // });
-    chrome.runtime
-  .sendMessage("hello from index")
-  .then(console.log, console.error);
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+      chrome.tabs.sendMessage(tabs[0].id, {greeting: "hello"}, function(response) {
+        console.log(response);
+      });
+    });
     const APIBody = {
       model: "text-davinci-003",
       prompt: "Give the summary of this text " + inputText,
@@ -48,4 +40,4 @@ const handleSubmit = async () => {
     console.log(err);
   }
 };
-handleSubmit();
+// handleSubmit();
